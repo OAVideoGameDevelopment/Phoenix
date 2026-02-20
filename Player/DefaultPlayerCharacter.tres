@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PlayerCharacterData" load_steps=2 format=3 uid="uid://dvyc820lqfjrx"]
+
+[ext_resource type="Script" uid="uid://dw0yxse7nva8" path="res://Player/PlayerCharacterData.gd" id="1_1sq1n"]
+
+[resource]
+resource_local_to_scene = true
+script = ExtResource("1_1sq1n")
+speed = 150.0
+dash_speed = 450.0
+gravity_scale = 1.25
+jump_velocity = -350.0
+wall_bounce = 200.0
+air_acceleration = 3000.0
+wall_crash = 75.0

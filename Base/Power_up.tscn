@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://dtn477wyv7hn7"]
+
+[ext_resource type="Texture2D" uid="uid://e306v7nsc7us" path="res://Projectiles/icon.svg" id="1_ci57c"]
+[ext_resource type="Script" path="res://Base/power_up.gd" id="1_g3h1e"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qtu7q"]
+size = Vector2(112, 112)
+
+[node name="Area2D" type="Area2D"]
+scale = Vector2(0.1, 0.1)
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("1_g3h1e")
+metadata/_edit_group_ = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_ci57c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_qtu7q")
+
+[connection signal="body_entered" from="." to="." method="power_up_collected"]
