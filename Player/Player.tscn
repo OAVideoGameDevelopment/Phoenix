@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=27 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" uid="uid://css8fudk4wvua" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" uid="uid://d0hh4ylil2c42" path="res://Player/player.gd" id="1_62trq"]
@@ -6,7 +6,10 @@
 [ext_resource type="Resource" uid="uid://dvyc820lqfjrx" path="res://Player/DefaultPlayerCharacter.tres" id="3_vcj7w"]
 [ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/test_attack-Sheet.png" id="6_1m13p"]
 [ext_resource type="Script" uid="uid://c2e8n7ejelcjv" path="res://Player/player_movement.gd" id="8_ip4se"]
+[ext_resource type="Script" uid="uid://dok7riwyll54e" path="res://Base/stats_logic.gd" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://b1ogharj5fnex" path="res://Player/player_default.gd" id="8_u63yy"]
+[ext_resource type="Script" uid="uid://cpsdfxvk7n8cb" path="res://Base/character_stats.gd" id="9_j23h2"]
+[ext_resource type="Script" uid="uid://g8nsp75yfies" path="res://Player/ability_manager.gd" id="10_0j2ni"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kltw"]
 atlas = ExtResource("3_lnawk")
@@ -181,6 +184,10 @@ _data = {
 &"walk": SubResource("Animation_13m0h")
 }
 
+[sub_resource type="Resource" id="Resource_0j2ni"]
+script = ExtResource("9_j23h2")
+metadata/_custom_type_script = "uid://cpsdfxvk7n8cb"
+
 [node name="Player" type="CharacterBody2D" groups=["Bodies", "Player"]]
 collision_layer = 2
 collision_mask = 5
@@ -238,3 +245,10 @@ script = ExtResource("8_ip4se")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
+
+[node name="Stats" type="Node" parent="."]
+script = ExtResource("8_s1rgi")
+data = SubResource("Resource_0j2ni")
+
+[node name="AbilityManager" type="Node" parent="."]
+script = ExtResource("10_0j2ni")

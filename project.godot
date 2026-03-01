@@ -26,6 +26,7 @@ window/stretch/mode="canvas_items"
 [file_customization]
 
 folder_colors={
+"res://Ability/": "orange",
 "res://Base/": "red",
 "res://Misc/": "yellow",
 "res://Player/": "blue"
