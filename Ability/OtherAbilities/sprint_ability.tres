@@ -1,0 +1,14 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://wwa6n3kvae7i"]
+
+[ext_resource type="Script" uid="uid://cdrbhji2r6eti" path="res://Ability/ability.gd" id="1_80pgq"]
+[ext_resource type="Script" uid="uid://bym661bu8r72n" path="res://Ability/OtherAbilities/sprint_ability.gd" id="2_0q0tn"]
+
+[sub_resource type="Resource" id="Resource_t24na"]
+script = ExtResource("1_80pgq")
+name = "Sprint"
+metadata/_custom_type_script = "uid://cdrbhji2r6eti"
+
+[resource]
+script = ExtResource("2_0q0tn")
+data = SubResource("Resource_t24na")
+metadata/_custom_type_script = "uid://c14dw11f4rkhi"

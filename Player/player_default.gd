@@ -2,6 +2,7 @@ class_name PlayerDefault
 extends State
 
 signal walk
+signal ability
 
 @export var actor: Player
 @export var animation: AnimationPlayer
@@ -21,10 +22,17 @@ func _physics_process(delta: float) -> void:
 	var input_axis_y := Input.get_axis("move_up", "move_down")
 	handle_friction_x(input_axis_x,delta)
 	handle_friction_y(input_axis_y,delta)
+	
 	animator.play("idle")
 	
 	# Cases
-	if (input_axis_x != 0 or input_axis_y != 0): walk.emit()
+	if (input_axis_x != 0 or input_axis_y != 0): 
+		walk.emit() 
+		return
+	
+	if (Input.is_action_just_pressed("ability1")):
+		ability.emit()
+		return
 
 func handle_friction_x(input_axis: float, delta: float) -> void:
 	if (input_axis == 0):

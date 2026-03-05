@@ -18,17 +18,24 @@ var example : bool = true
 @onready var fsm: FiniteStateMachine = $FiniteStateMachine
 @onready var player_movement: PlayerMovement = $FiniteStateMachine/PlayerMovement
 @onready var player_default: PlayerDefault = $FiniteStateMachine/PlayerDefault
+@onready var player_ability : PlayerAbility = $FiniteStateMachine/PlayerAbility
 
 func _ready() -> void:
 	# FSM Signals
 	default_signals()
 	movement_signals()
+	ability_signals()
 
 func movement_signals() -> void:
 	player_movement.default.connect(fsm.change_state.bind(player_default))
+	player_movement.ability.connect(fsm.change_state.bind(player_ability))
 
 func default_signals() -> void:
 	player_default.walk.connect(fsm.change_state.bind(player_movement))
+	player_default.ability.connect(fsm.change_state.bind(player_ability))
+
+func ability_signals() -> void:
+	player_ability.default.connect(fsm.change_state.bind(player_default))
 
 func _physics_process(_delta: float) -> void:
 	move_and_slide()

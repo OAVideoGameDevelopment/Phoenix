@@ -1,0 +1,15 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://c4sd6smpa721x"]
+
+[ext_resource type="Script" uid="uid://cdrbhji2r6eti" path="res://Ability/ability.gd" id="1_70usm"]
+[ext_resource type="Script" uid="uid://ckychlwohd8nf" path="res://Ability/OtherAbilities/practice_ability.gd" id="1_i4u7c"]
+
+[sub_resource type="Resource" id="Resource_itdyd"]
+script = ExtResource("1_70usm")
+name = "Practice Ability"
+base_damage = 1000.0
+metadata/_custom_type_script = "uid://cdrbhji2r6eti"
+
+[resource]
+script = ExtResource("1_i4u7c")
+data = SubResource("Resource_itdyd")
+metadata/_custom_type_script = "uid://c14dw11f4rkhi"
