@@ -1,4 +1,4 @@
-extends Node
+extends Resource
 class_name AbilityLogic
 
 @export var data: AbilityData

@@ -26,6 +26,7 @@ func calc_level(): # calc is short for calculator by the way
 		exp -= exp_to_level
 		level += 1
 		exp_to_level = level * exp_scaling
+		print(name+" has leveled up to Level "+str(level))
 	
 
 # Called when the node enters the scene tree for the first time.
