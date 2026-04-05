@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=24 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" uid="uid://css8fudk4wvua" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" uid="uid://d0hh4ylil2c42" path="res://Player/player.gd" id="1_62trq"]
@@ -6,6 +6,7 @@
 [ext_resource type="Resource" uid="uid://dvyc820lqfjrx" path="res://Player/DefaultPlayerCharacter.tres" id="3_vcj7w"]
 [ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/test_attack-Sheet.png" id="6_1m13p"]
 [ext_resource type="Script" uid="uid://c2e8n7ejelcjv" path="res://Player/player_movement.gd" id="8_ip4se"]
+[ext_resource type="Script" uid="uid://btbo1qgfb7n2n" path="res://Player/health_bar.gd" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://b1ogharj5fnex" path="res://Player/player_default.gd" id="8_u63yy"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kltw"]
@@ -182,8 +183,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" groups=["Bodies", "Player"]]
-collision_layer = 2
-collision_mask = 5
+collision_mask = 6
 floor_snap_length = 3.0
 platform_floor_layers = 4294967291
 safe_margin = 0.01
@@ -238,3 +238,18 @@ script = ExtResource("8_ip4se")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -47.0
+offset_top = 13.0
+offset_right = 54.0
+offset_bottom = 40.0
+script = ExtResource("8_s1rgi")
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 83.0
+offset_bottom = 56.0

@@ -19,10 +19,14 @@ var example : bool = true
 @onready var player_movement: PlayerMovement = $FiniteStateMachine/PlayerMovement
 @onready var player_default: PlayerDefault = $FiniteStateMachine/PlayerDefault
 
+@onready var healthBar = $HealthBar
+
 func _ready() -> void:
 	# FSM Signals
 	default_signals()
 	movement_signals()
+	
+	healthBar.set_health_bar(health, maxHealth)
 
 func movement_signals() -> void:
 	player_movement.default.connect(fsm.change_state.bind(player_default))
@@ -43,3 +47,15 @@ func dir_flip(input_axis: float) -> void:
 		# These will be used later
 		detection.scale.x *= -1
 		player_collision.position.x *= -1
+
+
+var maxHealth = 150
+var health = 50
+
+func take_damage(damage:int):
+	health -= damage
+	if health < 0: health = 0
+	healthBar.change_health(- damage)
+func take_heal(heal:int):
+	health += heal
+	healthBar.change_health(heal)
