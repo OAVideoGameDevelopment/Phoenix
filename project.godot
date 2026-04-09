@@ -33,6 +33,11 @@ folder_colors={
 "res://Player/": "blue"
 }
 
+[global_group]
+
+damage=""
+heal=""
+
 [input]
 
 move_right={

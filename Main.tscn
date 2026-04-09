@@ -14,6 +14,7 @@ air_acceleration = 3000.0
 [node name="Main" type="Node"]
 
 [node name="Player" parent="." instance=ExtResource("1_uu6xs")]
+position = Vector2(-1, 0)
 character_data = SubResource("Resource_cm0pq")
 
 [node name="Saw" parent="." instance=ExtResource("3_cm0pq")]
