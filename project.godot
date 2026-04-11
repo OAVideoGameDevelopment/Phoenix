@@ -27,9 +27,16 @@ window/stretch/mode="canvas_items"
 
 folder_colors={
 "res://Base/": "red",
+"res://Damage/": "pink",
+"res://Heals/": "green",
 "res://Misc/": "yellow",
 "res://Player/": "blue"
 }
+
+[global_group]
+
+damage=""
+heal=""
 
 [input]
 
