@@ -19,7 +19,7 @@ var example : bool = true
 @onready var player_movement: PlayerMovement = $FiniteStateMachine/PlayerMovement
 @onready var player_default: PlayerDefault = $FiniteStateMachine/PlayerDefault
 
-@onready var healthBar = $HealthBar
+@export var healthBar : ProgressBar
 
 func _ready() -> void:
 	# FSM Signals
@@ -55,6 +55,11 @@ func take_damage(damage:int):
 	character_data.HP -= damage
 	if character_data.HP < 0: character_data.HP = 0
 	healthBar.change_health(- damage)
+	if character_data.HP == 0:
+		die()
+		
+func die():
+	queue_free()
 
 func take_heal(heal:int):
 	character_data.HP += heal

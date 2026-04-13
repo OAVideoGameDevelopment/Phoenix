@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://di36bxkcrnr52"]
+[gd_scene load_steps=7 format=3 uid="uid://di36bxkcrnr52"]
 
 [ext_resource type="PackedScene" uid="uid://d2l1oof6loxxe" path="res://Player/Player.tscn" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://dw0yxse7nva8" path="res://Player/PlayerCharacterData.gd" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://b5yaa70qbh3li" path="res://Damage/Saw.tscn" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://wqcuyddc0728" path="res://Heals/Heart.tscn" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://btbo1qgfb7n2n" path="res://health_bar.gd" id="5_fos0i"]
 
 [sub_resource type="Resource" id="Resource_cm0pq"]
 resource_local_to_scene = true
@@ -13,12 +14,37 @@ air_acceleration = 3000.0
 
 [node name="Main" type="Node"]
 
-[node name="Player" parent="." instance=ExtResource("1_uu6xs")]
+[node name="Player" parent="." node_paths=PackedStringArray("healthBar") instance=ExtResource("1_uu6xs")]
 position = Vector2(-1, 0)
 character_data = SubResource("Resource_cm0pq")
+healthBar = NodePath("../CanvasLayer/HealthBar")
 
 [node name="Saw" parent="." instance=ExtResource("3_cm0pq")]
 position = Vector2(105, 67)
 
 [node name="Heart" parent="." instance=ExtResource("4_fos0i")]
 position = Vector2(222, 73)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="HealthBar" type="ProgressBar" parent="CanvasLayer" node_paths=PackedStringArray("label")]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -34.0
+offset_right = 51.0
+offset_bottom = -7.0
+grow_horizontal = 2
+grow_vertical = 0
+script = ExtResource("5_fos0i")
+label = NodePath("Label")
+
+[node name="Label" type="Label" parent="CanvasLayer/HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = -26.0
+offset_right = 83.0
