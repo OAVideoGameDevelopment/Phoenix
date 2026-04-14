@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/test_attack-Sheet.png" id="6_1m13p"]
 [ext_resource type="Script" uid="uid://c2e8n7ejelcjv" path="res://Player/player_movement.gd" id="8_ip4se"]
 [ext_resource type="Resource" uid="uid://wwa6n3kvae7i" path="res://Ability/OtherAbilities/sprint_ability.tres" id="8_p7tob"]
+[ext_resource type="Script" uid="uid://btbo1qgfb7n2n" path="res://Player/health_bar.gd" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://b1ogharj5fnex" path="res://Player/player_default.gd" id="8_u63yy"]
 [ext_resource type="Script" uid="uid://b5pm23s8n8nke" path="res://Player/player_ability.gd" id="8_v0k0e"]
 [ext_resource type="Resource" uid="uid://c4sd6smpa721x" path="res://Ability/OtherAbilities/practice_ability.tres" id="9_5wa8t"]
@@ -184,9 +185,15 @@ _data = {
 &"walk": SubResource("Animation_13m0h")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_s1rgi"]
+radius = 3.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_j23h2"]
+radius = 5.0
+height = 12.0
+
 [node name="Player" type="CharacterBody2D" groups=["Bodies", "Player"]]
-collision_layer = 2
-collision_mask = 5
+collision_mask = 6
 floor_snap_length = 3.0
 platform_floor_layers = 4294967291
 safe_margin = 0.01
@@ -224,6 +231,18 @@ editor_draw_drag_margin = true
 
 [node name="Detection" type="Node2D" parent="."]
 
+[node name="Damage" type="Area2D" parent="Detection"]
+collision_mask = 2
+
+[node name="DamageHitbox" type="CollisionShape2D" parent="Detection/Damage"]
+shape = SubResource("CircleShape2D_s1rgi")
+
+[node name="Heal" type="Area2D" parent="Detection"]
+collision_mask = 4
+
+[node name="HealHitbox" type="CollisionShape2D" parent="Detection/Heal"]
+shape = SubResource("CapsuleShape2D_j23h2")
+
 [node name="Timers" type="Node" parent="."]
 
 [node name="FiniteStateMachine" type="Node" parent="." node_paths=PackedStringArray("state")]
@@ -249,3 +268,21 @@ actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
 ability = ExtResource("9_5wa8t")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -51.0
+offset_top = 23.0
+offset_right = 50.0
+offset_bottom = 50.0
+script = ExtResource("8_s1rgi")
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 83.0
+offset_bottom = 56.0
+
+[connection signal="area_entered" from="Detection/Damage" to="." method="_on_damage_area_entered"]
+[connection signal="area_entered" from="Detection/Heal" to="." method="_on_heal_area_entered"]

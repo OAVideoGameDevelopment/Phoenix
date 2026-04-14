@@ -8,11 +8,15 @@
 
 config_version=5
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Phoenix"
 run/main_scene="uid://di36bxkcrnr52"
-config/features=PackedStringArray("4.5", "GL Compatibility")
+config/features=PackedStringArray("4.6", "GL Compatibility")
 config/icon="res://Misc/icon.svg"
 
 [display]
@@ -28,9 +32,16 @@ window/stretch/mode="canvas_items"
 folder_colors={
 "res://Ability/": "orange",
 "res://Base/": "red",
+"res://Damage/": "pink",
+"res://Heals/": "green",
 "res://Misc/": "yellow",
 "res://Player/": "blue"
 }
+
+[global_group]
+
+damage=""
+heal=""
 
 [input]
 
