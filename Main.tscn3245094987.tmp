@@ -31,5 +31,5 @@ position = Vector2(105, 67)
 position = Vector2(222, 73)
 
 [node name="Enemy" parent="." instance=ExtResource("5_fos0i")]
-position = Vector2(168, 146)
+position = Vector2(26, 0)
 character_data = SubResource("Resource_fos0i")

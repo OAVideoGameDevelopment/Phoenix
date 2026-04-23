@@ -1,0 +1,17 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://r0aqeukqqt6h"]
+
+[ext_resource type="Script" uid="uid://cdrbhji2r6eti" path="res://Ability/ability.gd" id="1_5ocnk"]
+[ext_resource type="Script" uid="uid://dah4filbmo0p7" path="res://Ability/AbilityTemplateScripts/melee_ability.gd" id="2_5ocnk"]
+
+[sub_resource type="Resource" id="Resource_itdyd"]
+script = ExtResource("1_5ocnk")
+name = "Melee Big Hit"
+base_damage = 1.0
+melee_hitbox_enable = true
+melee_hitbox_offset = Vector2(0, 50)
+metadata/_custom_type_script = "uid://cdrbhji2r6eti"
+
+[resource]
+script = ExtResource("2_5ocnk")
+data = SubResource("Resource_itdyd")
+metadata/_custom_type_script = "uid://c14dw11f4rkhi"

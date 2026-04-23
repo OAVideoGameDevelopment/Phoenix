@@ -14,6 +14,12 @@ class_name AbilityData
 @export var exp_scaling := 100.0 # +100 exp needed for every additional level
 @export var exp_to_level := 100.0
 
+@export var melee_hitbox_enable := false
+@export var melee_hitbox_size : Vector2 = Vector2(5,5)
+@export var melee_hitbox_offset : Vector2 = Vector2(0,0)
+@export var melee_hitbox_delay := 0.0
+@export var melee_hitbox_duration := 0.2
+
 func get_damage():
 	return base_damage * level
 

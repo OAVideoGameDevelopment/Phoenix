@@ -33,4 +33,14 @@ func _process(delta: float) -> void:
 		default.emit()
 		return
 	ability.while_use(actor, delta)
+	handle_friction_x(0, delta)
+	handle_friction_y(0, delta)
 	pass
+	
+func handle_friction_x(input_axis: float, delta: float) -> void:
+	if (input_axis == 0):
+		actor.velocity.x = move_toward(actor.velocity.x, 0, actor.character_data.friction * delta)
+
+func handle_friction_y(input_axis: float, delta: float) -> void:
+	if (input_axis == 0):
+		actor.velocity.y = move_toward(actor.velocity.y, 0, actor.character_data.friction * delta)

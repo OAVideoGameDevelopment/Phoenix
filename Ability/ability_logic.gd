@@ -1,7 +1,10 @@
 extends Resource
 class_name AbilityLogic
 
+
 @export var data: AbilityData
+
+
 # make sure to override this. 
 func use(user):
 	pass
@@ -11,4 +14,5 @@ func stop_use(user):
 	
 func while_use(user, delta: float):
 	pass
+	
 	

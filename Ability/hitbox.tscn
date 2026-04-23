@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bh8du3opop534"]
+
+[ext_resource type="Script" uid="uid://1tluihp70q2r" path="res://Ability/hitbox.gd" id="1_esvl6"]
+[ext_resource type="Texture2D" uid="uid://llcca3vhihbv" path="res://Misc/gallopon.jpg" id="2_lcefl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_22vse"]
+
+[node name="Hitbox" type="Area2D"]
+collision_layer = 16
+collision_mask = 8
+script = ExtResource("1_esvl6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_22vse")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.44705883)
+position = Vector2(0, -3.799796e-07)
+scale = Vector2(0.07272726, 0.10928961)
+texture = ExtResource("2_lcefl")
