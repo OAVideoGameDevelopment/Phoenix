@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://di36bxkcrnr52"]
+
+[ext_resource type="PackedScene" uid="uid://d2l1oof6loxxe" path="res://Player/Player.tscn" id="1_uu6xs"]
+[ext_resource type="Script" uid="uid://dw0yxse7nva8" path="res://Player/PlayerCharacterData.gd" id="2_r0du0"]
+[ext_resource type="PackedScene" uid="uid://b5yaa70qbh3li" path="res://Damage/Saw.tscn" id="3_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://wqcuyddc0728" path="res://Heals/Heart.tscn" id="4_fos0i"]
+[ext_resource type="PackedScene" uid="uid://m2spfqyeopd6" path="res://Enemy/Enemy.tscn" id="5_fos0i"]
+
+[sub_resource type="Resource" id="Resource_cm0pq"]
+resource_local_to_scene = true
+script = ExtResource("2_r0du0")
+speed = 150.0
+air_acceleration = 3000.0
+
+[sub_resource type="Resource" id="Resource_fos0i"]
+resource_local_to_scene = true
+script = ExtResource("2_r0du0")
+speed = 150.0
+air_acceleration = 3000.0
+
+[node name="Main" type="Node"]
+
+[node name="Player" parent="." instance=ExtResource("1_uu6xs")]
+position = Vector2(-1, 0)
+character_data = SubResource("Resource_cm0pq")
+
+[node name="Saw" parent="." instance=ExtResource("3_cm0pq")]
+position = Vector2(105, 67)
+
+[node name="Heart" parent="." instance=ExtResource("4_fos0i")]
+position = Vector2(222, 73)
+
+[node name="Enemy" parent="." instance=ExtResource("5_fos0i")]
+position = Vector2(26, 0)
+character_data = SubResource("Resource_fos0i")

@@ -6,8 +6,11 @@
 [ext_resource type="Resource" uid="uid://dvyc820lqfjrx" path="res://Player/DefaultPlayerCharacter.tres" id="3_vcj7w"]
 [ext_resource type="Texture2D" uid="uid://cjooboer2dbvg" path="res://Player/test_attack-Sheet.png" id="6_1m13p"]
 [ext_resource type="Script" uid="uid://c2e8n7ejelcjv" path="res://Player/player_movement.gd" id="8_ip4se"]
+[ext_resource type="Resource" uid="uid://wwa6n3kvae7i" path="res://Ability/AbilityTres/sprint_ability.tres" id="8_p7tob"]
 [ext_resource type="Script" uid="uid://btbo1qgfb7n2n" path="res://Player/health_bar.gd" id="8_s1rgi"]
 [ext_resource type="Script" uid="uid://b1ogharj5fnex" path="res://Player/player_default.gd" id="8_u63yy"]
+[ext_resource type="Script" uid="uid://b5pm23s8n8nke" path="res://Player/player_ability.gd" id="8_v0k0e"]
+[ext_resource type="Resource" uid="uid://r0aqeukqqt6h" path="res://Ability/AbilityTres/melee_big_hit.tres" id="10_v0k0e"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_3kltw"]
 atlas = ExtResource("3_lnawk")
@@ -257,6 +260,30 @@ script = ExtResource("8_ip4se")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
+movementAbility = ExtResource("8_p7tob")
+
+[node name="PlayerAbility" type="Node" parent="FiniteStateMachine" node_paths=PackedStringArray("actor", "animator", "animation")]
+script = ExtResource("8_v0k0e")
+actor = NodePath("../..")
+animator = NodePath("../../AnimatedSprite2D")
+animation = NodePath("../../AnimationPlayer")
+ability = ExtResource("10_v0k0e")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+offset_left = -7.0
+offset_top = 8.0
+offset_right = 94.0
+offset_bottom = 35.0
+scale = Vector2(0.15, 0.15)
+script = ExtResource("8_s1rgi")
+
+[node name="Label" type="Label" parent="HealthBar"]
+layout_mode = 1
+anchors_preset = -1
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 83.0
+offset_bottom = 56.0
 
 [connection signal="area_entered" from="Detection/Damage" to="." method="_on_damage_area_entered"]
 [connection signal="area_entered" from="Detection/Heal" to="." method="_on_heal_area_entered"]

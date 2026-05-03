@@ -1,0 +1,46 @@
+extends State
+class_name PlayerAbility
+
+@export var actor: Player
+@export var animator: AnimatedSprite2D
+@export var animation: AnimationPlayer
+
+@export var ability : AbilityLogic
+
+signal default
+
+var timeStarted : float
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	set_physics_process(false)
+	set_process(false)
+
+func _enter_state() -> void:
+	set_physics_process(true)
+	set_process(true)
+	timeStarted = Time.get_ticks_msec()
+	ability.use(actor)
+
+func _exit_state() -> void:
+	set_process(false)
+	set_physics_process(false)
+	ability.stop_use(actor)
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	if (Time.get_ticks_msec() - timeStarted > ability.data.cooldown * 1000):
+		default.emit()
+		return
+	ability.while_use(actor, delta)
+	handle_friction_x(0, delta)
+	handle_friction_y(0, delta)
+	pass
+	
+func handle_friction_x(input_axis: float, delta: float) -> void:
+	if (input_axis == 0):
+		actor.velocity.x = move_toward(actor.velocity.x, 0, actor.character_data.friction * delta)
+
+func handle_friction_y(input_axis: float, delta: float) -> void:
+	if (input_axis == 0):
+		actor.velocity.y = move_toward(actor.velocity.y, 0, actor.character_data.friction * delta)
