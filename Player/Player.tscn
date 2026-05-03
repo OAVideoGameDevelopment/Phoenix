@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://d2l1oof6loxxe"]
+[gd_scene load_steps=25 format=3 uid="uid://d2l1oof6loxxe"]
 
 [ext_resource type="Script" uid="uid://css8fudk4wvua" path="res://Base/finite_state_machine.gd" id="1_6ddrn"]
 [ext_resource type="Script" uid="uid://d0hh4ylil2c42" path="res://Player/player.gd" id="1_62trq"]
@@ -257,21 +257,6 @@ script = ExtResource("8_ip4se")
 actor = NodePath("../..")
 animator = NodePath("../../AnimatedSprite2D")
 animation = NodePath("../../AnimationPlayer")
-
-[node name="HealthBar" type="ProgressBar" parent="."]
-offset_left = -51.0
-offset_top = 23.0
-offset_right = 50.0
-offset_bottom = 50.0
-script = ExtResource("8_s1rgi")
-
-[node name="Label" type="Label" parent="HealthBar"]
-layout_mode = 1
-anchors_preset = -1
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 83.0
-offset_bottom = 56.0
 
 [connection signal="area_entered" from="Detection/Damage" to="." method="_on_damage_area_entered"]
 [connection signal="area_entered" from="Detection/Heal" to="." method="_on_heal_area_entered"]
