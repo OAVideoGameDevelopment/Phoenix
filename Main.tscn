@@ -1,11 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://di36bxkcrnr52"]
+[gd_scene load_steps=9 format=3 uid="uid://di36bxkcrnr52"]
 
 [ext_resource type="PackedScene" uid="uid://d2l1oof6loxxe" path="res://Player/Player.tscn" id="1_uu6xs"]
 [ext_resource type="Script" uid="uid://dw0yxse7nva8" path="res://Player/PlayerCharacterData.gd" id="2_r0du0"]
 [ext_resource type="PackedScene" uid="uid://b5yaa70qbh3li" path="res://Damage/Saw.tscn" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://wqcuyddc0728" path="res://Heals/Heart.tscn" id="4_fos0i"]
-[ext_resource type="PackedScene" uid="uid://m2spfqyeopd6" path="res://Enemy/Enemy.tscn" id="5_fos0i"]
 [ext_resource type="Script" uid="uid://btbo1qgfb7n2n" path="res://Player/health_bar.gd" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://m2spfqyeopd6" path="res://Enemy/Enemy.tscn" id="6_3dxm6"]
 
 [sub_resource type="Resource" id="Resource_cm0pq"]
 resource_local_to_scene = true
@@ -13,7 +13,7 @@ script = ExtResource("2_r0du0")
 speed = 150.0
 air_acceleration = 3000.0
 
-[sub_resource type="Resource" id="Resource_fos0i"]
+[sub_resource type="Resource" id="Resource_lgr22"]
 resource_local_to_scene = true
 script = ExtResource("2_r0du0")
 speed = 150.0
@@ -32,9 +32,6 @@ position = Vector2(105, 67)
 [node name="Heart" parent="." instance=ExtResource("4_fos0i")]
 position = Vector2(222, 73)
 
-[node name="Enemy" parent="." instance=ExtResource("5_fos0i")]
-position = Vector2(168, 146)
-character_data = SubResource("Resource_fos0i")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="HealthBar" type="ProgressBar" parent="CanvasLayer"]
@@ -60,3 +57,7 @@ offset_top = 1.0
 offset_right = 76.0
 offset_bottom = 27.0
 horizontal_alignment = 1
+
+[node name="Enemy" parent="." instance=ExtResource("6_3dxm6")]
+position = Vector2(54, 32)
+character_data = SubResource("Resource_lgr22")
